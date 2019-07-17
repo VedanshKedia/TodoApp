@@ -1,0 +1,35 @@
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+tr.Complete td:before{
+    content: " ";
+    position: absolute;
+    /*top: 50%;*/
+    left: 0;
+    border-bottom: 3px solid #111;
+    width: 100%;
+    background-color: green;
+}
+tr.Complete td:after {
+  content: "\00B7";
+  font-size: 1px;
+}
+
+.High{
+    background-color: red;
+}
+
+.Medium{
+    background-color: orange;
+}
+
+.Low{
+    background-color: green;
+}
+
+tr.Complete{
+    background-color: green; !important;
+}

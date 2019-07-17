@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Todo</title>
+</head>
+<body>
+{% extends "base.html" %}
+{% block content %}
+    <form action="{% url 'addtodo' %}" method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit">
+    </form>
+{% endblock %}
+</body>
+</html>

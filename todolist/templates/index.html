@@ -1,0 +1,40 @@
+{% extends "base.html" %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+{% block content %}
+
+<br>
+    <table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th>User</th>
+        <th>Title</th>
+        <th>Todo Description</th>
+        <th>Todo Date and Time</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th><a href="{% url 'delete_all' %}"><button>Delete all</button></a></th>
+    </tr>
+    </thead>
+        {% for todo in todoList %}
+            <tr id="{{ todo.id }}" class="{{ todo.priority }} {{ todo.status }}">
+                <td>{{ todo.creator }}</td>
+                <td>{{ todo.todoTitle }}</td>
+                <td>{{ todo.todoDescription }}</td>
+                <td>{{ todo.todoDateTime }}</td>
+                <td> {{ todo.priority }} </td>
+                <td><a href="{% url 'update_status' todo.pk %}"><button>{{ todo.status }}</button></a></td>
+                <td><a href="{% url 'delete' todo.pk %}"><button>Delete</button></a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
+</body>
+</html>
