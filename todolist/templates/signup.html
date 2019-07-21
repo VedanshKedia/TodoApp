@@ -8,18 +8,83 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Create account - The Great Django Blog</h1>
+{#  <h1>Create account - The Great Django Blog</h1>#}
+{##}
+{#         <form method="post" >#}
+{#             {% csrf_token %}#}
+{#             <table>#}
+{#                {{ form.as_table }}#}
+{#                 <tr>#}
+{#                    <td></td>#}
+{#                    <td><input type="submit" name="submit" value="signup" /></td>#}
+{#                </tr>#}
+{#             </table>#}
+{#         </form>#}
 
-         <form method="post" >
-             {% csrf_token %}
-             <table>
-                {{ form.as_table }}
-                 <tr>
-                    <td></td>
-                    <td><input type="submit" name="submit" value="signup" /></td>
-                </tr>
-             </table>
-         </form>
+
+
+
+{#-----------login form----------------------#}
+
+<div class="row justify-content-md-center align-items-center login">
+<div class="col-sm-8">
+<div class="card text-center align-self-center  h-100">
+      <div class="card-header">
+        Create New Account!
+      </div>
+      <div class="card-body">
+            <div class="row">
+
+                <form method="post" class="container">
+                    {% csrf_token %}
+
+                    <div class="form-group row">
+                        <label for="id_username" class="col-sm-3 col-form-label">Username:</label>
+                        <div class="col-sm-8">
+                        <input type="text" name="username" maxlength="150" autofocus="" required="" id="id_username" class="col-sm-12">
+                            <br><small id="usernameHelp" class="form-text text-muted">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="id_password1" class="col-sm-3 col-form-label">Password:</label>
+                        <div class="col-sm-8">
+                        <input type="password" name="password1" required="" id="id_password1" class="col-sm-12">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="id_password2" class="col-sm-3 col-form-label">Re-Enter Password:</label>
+                        <div class="col-sm-8">
+                        <input type="password" name="password2" required="" id="id_password2" class="col-sm-12"><br>
+                        <small class="helptext form-text text-muted">
+                            <ul>
+                                <li>
+                                    Your password can't be too similar to your other personal information.
+                                </li>
+                                <li>Your password must contain at least 8 characters.</li>
+                                <li>Your password can't be a commonly used password.</li>
+                                <li>Your password can't be entirely numeric.</li>
+                            </ul>
+                        </small>
+                            </div>
+                    </div>
+                    <input type="submit" name="submit" value="signup" class="btn btn-primary btn-block">
+{#                    <input type="submit" class="btn btn-primary btn-block" value="login" />#}
+{#                    <input type="hidden" name="next" value="{{ next }}" />#}
+                </form>
+            </div>
+        </div>
+{#    <div class="card-footer">#}
+{#        <a href="{% url 'password_reset' %}">Lost password?</a>#}
+{#        <a href="{% url 'signup' %}">New?</a>#}
+{#    </div>#}
+</div>
+</div>
+</div>
+
 {% endblock %}
+{#-----------------------------------------#}
+
 </body>
 </html>

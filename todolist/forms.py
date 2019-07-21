@@ -8,3 +8,7 @@ class AddNewTodo(forms.Form):
     # datetime = forms.DateTimeField(help_text="Enter Date")
     priority = forms.ChoiceField(choices=PRIORITY_CHOICES)
     status = forms.ChoiceField(choices=POSSIBLE_STATUSES)
+
+
+class SentEmail(forms.Form):
+    mailid = forms.EmailField()
