@@ -4,10 +4,11 @@ from .models import TodoListItem
 from django.urls import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views import generic
-from .forms import AddNewTodo
+from .forms import AddNewTodo, SentEmail
 # from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.core.mail import send_mail
 # Create your views here.
 
 
@@ -17,6 +18,8 @@ def index(request):
 
     # Generate counts of some of the main objects
     todolist = TodoListItem.objects.filter(creator=request.user)
+
+    print(todolist)
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', {'todoList': todolist})
@@ -82,3 +85,21 @@ def update_status(request, pk):
         todo_item.save()
     return HttpResponseRedirect(reverse('index'))
 
+
+def sentmail(request):
+    if request.method == 'POST':
+        form = SentEmail(request.POST)
+        mailid = []
+        if form.is_valid():
+            mailid.append(form.cleaned_data['mailid'])
+            print(type(mailid))
+            send_mail(
+                TodoListItem.todoTitle,
+                TodoListItem.todoDescription,
+                'vedansh.kedia.iitb@gmail.com',
+                mailid,
+                fail_silently=False)
+            return HttpResponseRedirect(reverse('index'))
+    else:
+        form = SentEmail()
+        return render(request, 'sentmail.html', {'form': form})
