@@ -6,11 +6,39 @@
 </head>
 <body>
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
-</form>
+{#<form method="post">#}
+{#    {% csrf_token %}#}
+{#    <label for="id_mailid">Mailid:</label>#}
+{#    <input type="email" name="mailid" required="" id="id_mailid">#}
+{#    {{ form.as_p }}#}
+{#    <input type="submit" value="Submit">#}
+{#</form>#}
+
+
+
+<div class="row justify-content-md-center align-items-center login">
+<div class="col-sm-8">
+<div class="card text-center align-self-center  h-100">
+      <div class="card-header">
+        Enter your registered E-Mail ID
+      </div>
+      <div class="card-body">
+            <div class="row">
+                <form method="post" action="" class="container">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <label for="id_mailid" class="col-sm-3 col-form-label">Email:</label>
+                        <input type="email" name="mailid" maxlength="254" required="" id="id_mailid" class="col-sm-8">
+                    </div>
+                  <input type="submit" class="btn btn-primary btn-block" value="Submit">
+                </form>
+            </div>
+        </div>
+</div>
+</div>
+</div>
+
 {% endblock %}
+
 </body>
 </html>
